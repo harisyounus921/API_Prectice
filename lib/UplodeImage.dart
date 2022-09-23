@@ -24,8 +24,6 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
 
     if(pickedFile!= null ){
       image = File(pickedFile.path);
-      setState(() {
-      });
     }else {
       print('no image selected');
     }
@@ -37,18 +35,17 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
       showSpinner = true ;
     });
 
-    var stream  = new http.ByteStream(image!.openRead());
+    var stream  = http.ByteStream(image!.openRead());
     stream.cast();
-
     var length = await image!.length();
 
     var uri = Uri.parse('https://fakestoreapi.com/products');
 
-    var request = new http.MultipartRequest('POST', uri);
+    var request = http.MultipartRequest('POST', uri);
 
     request.fields['title'] = "Static title" ;
 
-    var multiport = new http.MultipartFile(
+    var multiport = http.MultipartFile(
         'image',
         stream,
         length);

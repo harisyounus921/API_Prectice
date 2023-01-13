@@ -16,9 +16,7 @@ class _UserWithoutModelState extends State<UserWithoutModel> {
 
     if(response.statusCode == 200){
       data = jsonDecode(response.body.toString());
-    }else {
-
-    }
+    }else {}
   }
   @override
   Widget build(BuildContext context) {
